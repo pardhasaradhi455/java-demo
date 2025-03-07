@@ -13,17 +13,17 @@ pipeline {
         }
         stage('Build') {
             steps {
-                ps1 'mvn clean package'
+                bat 'mvn clean package'
             }
         }
         stage('Test') {
             steps {
-                ps1 'mvn test'
+                bat 'mvn test'
             }
         }
         stage('Deliver') {
             steps {
-                ps1 './jenkins/scripts/deliver.ps1'
+                bat './jenkins/scripts/deliver.bat'
             }
         }
     }
