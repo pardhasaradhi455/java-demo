@@ -1,9 +1,9 @@
 pipeline {
     agent any
     stages {
-        stage ('Clean up'){
+        stage('Download'){
             steps {
-                deleteDir()
+                bat 'mvn clean install'
             }
         }
         stage('Build') {
@@ -19,6 +19,11 @@ pipeline {
         stage('Deliver') {
             steps {
                 bat './jenkins/scripts/deliver.bat'
+            }
+        }
+        stage ('Clean up'){
+            steps {
+                deleteDir()
             }
         }
     }
